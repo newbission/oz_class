@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Challenge 02 설문조사 양식</title>
+  </head>
+  <body>
+    <h1>OZ 설문조사</h1>
+    <form action="#none">
+      <fieldset>
+        <legend><b>신중한 선택 부탁드려요</b></legend>
+        <fieldset>
+          <legend>개인정보</legend>
+          <div>
+            <label for="name">이름</label> <input type="text" id="name" />
+          </div>
+          <div>
+            <label for="email-txt">이메일</label>
+            <input type="text" id="email-txt" /> @
+            <select>
+              <option value="notice">선택해주세요</option>
+              <option value="naver">naver.com</option>
+              <option value="nate">nate.com</option>
+              <option value="daum">daum.net</option>
+              <option value="gmail">gmail.com</option>
+            </select>
+          </div>
+          <div>
+            <label for="age">나이</label>
+            <input type="radio" name="age" id="age10" checked /><label
+              for="age10"
+              >10대</label
+            >
+            <input type="radio" name="age" id="age20" /><label for="age20"
+              >20대</label
+            >
+            <input type="radio" name="age" id="age30" /><label for="age30"
+              >30대</label
+            >
+            <input type="radio" name="age" id="age40" /><label for="age40"
+              >40대</label
+            >
+            <input type="radio" name="age" id="age50" /><label for="age50"
+              >50대 이상</label
+            >
+          </div>
+        </fieldset>
+        <hr />
+        <fieldset>
+          <legend>언어</legend>
+          <ol>
+            <li>
+              <label for="now-study-lang">현재 배우는 언어</label>
+              <input type="text" placeholder="파이썬, Java 등" />
+            </li>
+            <li>
+              다음 중 배우고 싶은 언어를 선택해주세요. (중복 가능)
+              <div>
+                <input type="checkbox" name="wish-study-lang" id="wish-c" />
+                <label for="wish-c">C</label>
+                <input type="checkbox" name="wish-study-lang" id="wish-java" />
+                <label for="wish-java">Java</label>
+                <input
+                  type="checkbox"
+                  name="wish-study-lang"
+                  id="wish-javascript"
+                />
+                <label for="wish-javascript">JavaScript</label>
+                <input
+                  type="checkbox"
+                  name="wish-study-lang"
+                  id="wish-python"
+                />
+                <label for="wish-python">Python</label>
+                <input type="checkbox" name="wish-study-lang" id="wish-swift" />
+                <label for="wish-swift">Swift</label>
+                <input type="checkbox" name="wish-study-lang" id="wish-other" />
+                <label for="wish-other">기타 <input type="text" /></label>
+              </div>
+            </li>
+            <li>
+              자신이 배운 언어를 1~5 사이로 점수를 매겨주세요. (없으면 없음
+              기재)
+              <textarea
+                name="lang-level"
+                id="lang-level"
+                cols="50"
+                rows="5"
+                placeholder="C - 1&#13;&#10;Python - 3&#13;&#10;JavaScript - 2"
+              ></textarea>
+            </li>
+          </ol>
+        </fieldset>
+        <fieldset>
+          <legend>기타 의견</legend>
+          <textarea name="other-opnion" id="other-opnion" cols="65" rows="5"></textarea>
+        </fieldset>
+        <p>
+          설문에 참여해주셔서 감사합니다. <b><mark>새해복 많이받으세요~!!</mark></b>
+        </p>
+        <button type="submit">제출</button>
+        <button type="reset">취소</button>
+      </fieldset>
+    </form>
+  </body>
+</html>
+
+<!-- 
+- 요소를 묶어서 사용하는 시맨틱 태그 사용해서 파트 나누기
+- <form> 사용
+- <fieldset> 사용
+- <input> 사용 (다양한 type 사용해보기)
+- 다중 선택이 불가한 항목은 한개만 눌리게 설정해주세요.
+- 자유로운 내용을 이용하여 원하는 설문조사 양식 만들어보기 -->
