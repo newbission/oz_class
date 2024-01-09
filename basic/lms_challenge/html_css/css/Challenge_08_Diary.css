@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  width: 650px;
+  background: linear-gradient(to bottom right, slateblue 20%, tomato 50%, pink 80%);
+}
+
+/* header, footer */
+header,
+footer{
+  color: white;
+}
+
+/* main */
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.main > div {
+  border: 3px double black;
+  width: 400px;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* title */
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 10px;
+}
+
+#emotion-wrapper {
+}
+
+
+/* content */
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  font-size: 16px;
+}
+
+#content > p {
+  margin: 5px 0;
+}
+
+.content-css {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#css1 {
+  background-color: rgba(255, 217, 0, 0.627);
+  font-style: italic;
+  color: white;
+  padding: 3px 10px;
+}
+
+#css2 {
+  color: blueviolet;
+}
+
+#css3 {
+  font-family: 'Song Myung', serif;
+  color: brown;
+  font-size: 23px;
+  padding: 20px 0;
+}
