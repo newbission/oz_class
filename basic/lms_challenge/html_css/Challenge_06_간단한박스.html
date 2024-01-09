@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>박스로 간단하게 꾸미기</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(to top right, #3992d8, #dc534d);
+      }
+      #box {
+        width: 100px;
+        padding: 15px 10px;
+        border: 2px solid #2694dc;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: #2694dc;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      Hello, OZ!
+    </div>
+  </body>
+</html>
