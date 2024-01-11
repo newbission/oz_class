@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snowman</title>
+  <style>
+    body{
+      height: 100vh;
+      margin: 0;
+      background-color: skyblue;
+    }
+    /* 모자 */
+    .hat {
+      width: 30px;
+      height: 40px;
+      top: 5px;
+      z-index: 1;
+    }
+    .hat::after{
+      content: '';
+      width: 50px;
+      height: 10px;
+      background-color: #000;
+      position: absolute;
+      bottom: 0;
+      left: -10px;
+    }
+
+    /* 머리 */
+    .head {
+      width: 50px;
+      height: 50px;
+    }
+
+    .eyes{
+      top: 5px;
+      left: 15px;
+    }
+
+    .eye {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+    }
+
+    .mouth {
+      width: 20px;
+      height: 7px;
+      bottom: 15px;
+      left: 15px;
+      border-radius: 10px 10px 30px 30px;
+    }
+
+    /* 몸통 */
+    .body {
+      width: 60px;
+      height: 60px;
+    }
+
+    .body::before,
+    .body::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 50px;
+      height: 5px;
+      background-color: brown;
+    }
+
+    .body::before {
+      transform: rotate(30deg);
+      left: -30px;
+      top: 5px;
+    }
+    
+    .body::after {
+      transform: rotate(-30deg);
+      right: -30px;
+      top: 5px;
+    }
+
+    .button {
+      width: 5px;
+      height: 5px;
+      margin: 10px;
+    }
+
+    /* 밑부분 */
+    .bottom {
+      width: 70px;
+      height: 70px;
+    }
+    
+    /* 자주 사용하는 속성 모음 */
+    .flex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .relative {
+      position: relative
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .white {
+      background-color: #fff;
+    }
+
+    .black {
+      background-color: #000;
+    }
+
+    .circle {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body class="flex relative">
+  <div class="flex">
+    <div class="hat black relative"></div>
+    <div class="head white relative circle">
+      <div class="eyes absolute">
+        <div class="eye black circle" id="eye1"></div>
+        <div class="eye black circle" id="eye2"></div>
+      </div>
+      <div class="mouth absolute black"></div>
+    </div>
+    <div class="body white relative circle flex">
+      <div class="buttons">
+        <div class="button black circle"></div>
+        <div class="button black circle"></div>
+        <div class="button black circle"></div>
+      </div>
+    </div>
+    <div class="bottom white relative circle"></div>
+  </div>
+</body>
+</html>
