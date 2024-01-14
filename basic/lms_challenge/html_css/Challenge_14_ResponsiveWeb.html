@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 반응형 웹</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: white;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    p::after{
+      display: block;
+      width: 100%;
+      white-space:pre;
+    }
+    @media screen and (max-width: 480px) {
+      body{
+        background-color: skyblue;
+      }
+      p::after{
+        content: "Smaller smartphones\A 0px ~ 480px";
+      }
+    }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+      body{
+        background-color: coral;
+      }
+      p::after{
+        content: "Tablets & larger smartphones\A 481px ~ 768px";
+      }
+    }
+    @media screen and (min-width: 769px) and (max-width: 1279px) {
+      body{
+        background-color: crimson;
+      }
+      p::after{
+        content: "Laptops, larget tablets in landscape, and small desktops\A 769px ~ 1279px";
+      }
+    }
+    @media screen and (min-width: 1280px) {
+      body{
+        background-color: darkorchid;
+      }
+      p::after{
+        content: "Larger desktops and monitors\A 1280px ~";
+      }
+    }
+  </style>
+</head>
+<body>
+  <p>여러화면크기로 구경해봐요!</p>
+</body>
+</html>
