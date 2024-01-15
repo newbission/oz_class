@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>몬스터 잡기 게임</title>
+</head>
+<body>
+  <script>
+    const body = document.body;
+
+    let hp = 100;
+    let dmg = Math.floor(+prompt('1회 공격시 데미지는? (양의 정수입력)'));
+    if(isNaN(dmg) || dmg <= 0) dmg = 10;
+    let cnt = 1;
+    const title = document.createElement('h1');
+    title.innerText = '몬스터 잡기 게임을 시작합니다!';
+    title.style.color = 'green';
+    body.appendChild(title);
+    while(hp > 0){
+      hp -= dmg;
+      if(hp < 0) hp = 0;
+
+      const atk = document.createElement('p');
+      atk.innerText = `몬스터를 ${cnt++}회 공격했다!`;
+      const rest = document.createElement('strong');
+      rest.innerText = `몬스터의 남은 HP는 ${hp}입니다!!`;
+      rest.style.color = 'tomato';
+      body.appendChild(atk);
+      body.appendChild(rest);
+    }
+    const ending = document.createElement('h2');
+    ending.innerText = '몬스터 잡기 완료! 수고하셨습니다~~';
+    ending.style.color = 'orange';
+    ending.title = '게임을 다시 시작하고 싶으면 새로고침하세요';
+    body.appendChild(ending);
+  </script>
+</body>
+</html>

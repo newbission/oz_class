@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js 복습</title>
+</head>
+<body>
+  <!-- 학점 계산 -->
+  <h1>1. if문을 활용한 학점 계산</h1>
+  <p id="result__grade"></p>
+  <script>
+    const result__grade = document.getElementById('result__grade');
+    const score = prompt('점수를 입력하세요')
+    let grade = 'S';
+    if(score >= 90) grade = 'A';
+    else if(score >= 80) grade = 'B';
+    else if(score >= 70) grade = 'C';
+    else if(score >= 60) grade = 'D';
+    else grade = 'F';
+    result__grade.innerText = `나의 중간고사 점수는 ${score}점, 학점은 ${grade}!!!`;
+  </script>
+
+  <!-- 별트리 찍기 -->
+  
+  <h1>2. 별트리 찍기</h1>
+  <h2>1번 별</h2>
+  <p id="result__star1"></p>
+  <h2>2번 별</h2>
+  <p id="result__star2"></p>
+  <h2>3번 별</h2>
+  <p id="result__star3"></p>
+  <script>
+    const result__star1 = document.getElementById('result__star1');
+    const result__star2 = document.getElementById('result__star2');
+    const result__star3 = document.getElementById('result__star3');
+
+    let star = '';
+    for(let i=1; i<=5; i++){
+      let temp = '';
+      for(let j=0; j<i; j++){
+        temp += '*';
+      }
+      star += temp + '<br>';
+    }
+    result__star1.innerHTML = star;
+    
+    result__star2.innerHTML = star;
+    star = '';
+    for(let i=5; i>=1; i--){
+      let temp = '';
+      for(let j=0; j<i; j++){
+        temp += '*';
+      }
+      star += temp + '<br>';
+    }
+    result__star2.innerHTML += star;
+    
+    star = '';
+    for(let i=1; i<=9; i+=2){
+      let temp = '';
+      for(let j=0; j<(9-i)/2; j++){
+        temp += '&nbsp;'
+      }
+      for(let j=0; j<i; j++){
+        temp += '*';
+      }
+      star += temp + '<br>';
+    }
+    for(let i=7; i>=1; i-=2){
+      let temp = '';
+      for(let j=0; j<(9-i)/2; j++){
+        temp += '&nbsp;'
+      }
+      for(let j=0; j<i; j++){
+        temp += '*';
+      }
+      star += temp + '<br>';
+    }
+    result__star3.innerHTML += star;
+  </script>
+
+  <!-- 4의 배수 5개씩 출력하기 -->
+
+  <h1>3. 4의 배수 5개씩 출력하기</h1>
+  <p id="result__4"></p>
+  <script>
+    const result__4 = document.getElementById('result__4');
+    let n = 100;
+    let cnt = 0;
+    let str__4 = '';
+    while(n <= 500) {
+      str__4 += n + ' ';
+      cnt++;
+      if(cnt === 5){
+        cnt = 0;
+        str__4 += '<br>';
+      }
+      n += 4;
+    }
+    result__4.innerHTML = str__4;
+  </script>
+
+  <!-- 미스테리 숫자 맞추기 -->
+  <style>
+    #mystery__wrapper {
+      text-align: center;
+      border: 1px solid black;
+      background-color: #323232;
+      color: white;
+      height: 300px;
+    }
+    #mystery__input {
+      width: 180px;
+      font-size: 2em;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    #mystery__input:focus {
+      outline: none;
+      border: 2px solid skyblue;
+    }
+
+    #mystery__input::-webkit-outer-spin-button,
+    #mystery__input::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+    }
+
+    #mystery__btn {
+      width: 150px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid orange;
+      background-color: #323232;
+      color: orange;
+      margin-left: 25px;
+      vertical-align: bottom;
+      cursor: pointer;
+    }
+    
+    #mystery__btn:hover {
+      transform: scale(1.2);
+      box-shadow: 0 3px 5px orange;
+    }
+
+    .bottom {
+      margin-top: 50px;
+    }
+    
+    #mystery__reset {
+      position: relative;
+      width: 150px;
+      padding: 10px;
+      border: 5px ridge skyblue;
+      background: linear-gradient(to right, #323232 0%, #323232 0%);
+      color: skyblue;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    #mystery__reset > span {
+      position: relative;
+    }
+
+    #mystery__reset > div {
+      position: absolute;
+      top: 100%;
+      left: -100%;
+      z-index: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background-color: skyblue;
+      transition: 0.5s linear;
+    }
+
+    #mystery__reset:hover > div{
+      top: 0;
+      left: 0;
+    }
+
+    #mystery__reset:hover > span {
+      animation: changeColor 0.5s linear forwards;
+    }
+
+    @keyframes changeColor {
+      to {
+        color: white;
+      }
+    }
+
+    .none {
+      display: none;
+    }
+  </style>
+  <div id="mystery__wrapper">
+    <h1>4. Mystery Number 맞추기</h1>
+    <h3>1부터 100사이의 숫자를 입력하세요!</h3>
+    <div>
+      <input type="number" id="mystery__input"> <button id="mystery__btn">뚜둥!</button>
+    </div>
+    <div class="bottom">
+      <p id="mystery__hint"></p>
+      <button class="none" id="mystery__reset"><div></div><span>다시하기</span></button>
+    </div>
+  </div>
+  <script>
+    let randNum = getRandNum();
+    const input = document.getElementById('mystery__input');
+    const btn = document.getElementById('mystery__btn');
+    const hint = document.getElementById('mystery__hint');
+    const reset = document.getElementById('mystery__reset');
+    btn.addEventListener('click', () => {
+      const value = +input.value;
+      if(value === '' || value <= 0 || value > 100) return;
+
+      if(value === randNum){
+        window.alert('👏👏👏 정답입니다~!');
+        hint.classList.add('none');
+        reset.classList.remove('none');
+      }else if(value < randNum) {
+        hint.innerText = '힌트: 숫자가 작아요! 조금 더 높여보세요!!';
+        hint.classList.remove('none');
+      }else{
+        hint.innerText = '힌트: 숫자가 커요! 조금 더 낮춰보세요!!';
+        hint.classList.remove('none');
+      }
+    })
+
+    reset.addEventListener('click', () => {
+      randNum = getRandNum();
+      hint.innerText = '';
+      reset.classList.add('none');
+      input.value = '';
+    })
+
+    function getRandNum(){
+      const rand = Math.floor(Math.random() * 100) +1;
+      console.log(rand);
+      return rand;
+    }
+  </script>
+</body>
+</html>
