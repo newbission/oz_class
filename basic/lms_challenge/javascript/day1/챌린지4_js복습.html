@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS 복습하기</title>
+    <style>
+      .shadow-red,
+      .shadow-green,
+      .shadow-yellow,
+      form {
+        width: 500px;
+        border-radius: 10px;
+        height: 100%;
+      }
+
+      .shadow-red {
+        box-shadow: 20px 20px tomato;
+      }
+
+      .shadow-green {
+        box-shadow: 15px 15px seagreen;
+      }
+
+      .shadow-yellow {
+        box-shadow: 10px 10px gold;
+      }
+
+      form {
+        box-shadow: 5px 5px darkseagreen;
+        background-color: #f1fee9;
+      }
+
+      #title {
+        text-align: center;
+        padding-top: 30px;
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      input {
+        height: 32px;
+      }
+
+      .input-short {
+        width: 80px;
+        padding-left: 5px;
+      }
+
+      .center {
+        display: block;
+        margin: 10px auto;
+        width: 300px;
+        height: 40px;
+      }
+
+      input.center {
+        box-sizing: border-box;
+        padding: 18px 5px;
+      }
+
+      .container-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .flex-center {
+        justify-content: space-around;
+      }
+
+      select {
+        padding-left: 5px;
+      }
+
+      input[type="radio"] {
+        margin: -2px 5px 0px 5px;
+      }
+
+      button {
+        width: 150px;
+        height: 40px;
+        background-color: #fff;
+        border: 1px solid black;
+        margin: 5px;
+      }
+
+      button:hover {
+        background-color: #ddd;
+      }
+
+      button:active {
+        background-color: #eee;
+      }
+
+      form {
+        padding-bottom: 10px;
+      }
+    </style>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      .container > * {
+        margin: 100px 0;
+      }
+
+      .darkmode__wrap {
+        text-align: center;
+      }
+
+      #darkmode__div {
+        width: 500px;
+        height: 300px;
+        border: 1px solid black;
+      }
+    </style>
+    <style>
+      #carousel__img_wrap {
+        width: 500px;
+        height: 300px;
+        border: 1px solid black;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #carousel__imgs {
+        position:absolute;
+        left: 0;
+        top: 0;
+        width: 300%;
+        height: 300px;
+        vertical-align: bottom;
+        font-size: 0;
+        transition: 0.3s;
+      }
+
+      #carousel__imgs > img {
+        width: 500px;
+        height: 300px;
+      }
+
+      .carousel__btns {
+        text-align: center;
+      }
+      .carousel__btns > * {
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="darkmode__wrap">
+        <h1>다크모드</h1>
+        <div id="darkmode__div"></div>
+        <button id="darkmode__btn">🌜</button>
+      </div>
+      <script>
+        const darkmode__div = document.getElementById('darkmode__div');
+        const darkmode__btn = document.getElementById('darkmode__btn');
+        darkmode__btn.addEventListener('click', () => {
+          const value = darkmode__btn.innerText;
+          if(value === '🌞') {
+            darkmode__btn.innerText = '🌜'
+            darkmode__div.style.backgroundColor ='white';
+          }else {
+            darkmode__btn.innerText = '🌞'
+            darkmode__div.style.backgroundColor ='black';
+          }
+        })
+      </script>
+
+      <div class="carousel__wrap">
+        <h1>캐러셀</h1>
+        <div id="carousel__img_wrap">
+          <div id="carousel__imgs">
+            <img src="oz1.jpg">
+            <img src="oz2.jpg">
+            <img src="oz3.jpg">
+          </div>
+        </div>
+        <div class="carousel__btns">
+          <button id="carousel__btn_prev">이전</button>
+          <button id="carousel__btn1"">1</button>
+          <button id="carousel__btn2">2</button>
+          <button id="carousel__btn3">3</button>
+          <button id="carousel__btn_next">다음</button>
+        </div>
+      </div>
+      <script>
+        const carousel__btn_prev = document.getElementById('carousel__btn_prev');
+        const carousel__btn1 = document.getElementById('carousel__btn1');
+        const carousel__btn2 = document.getElementById('carousel__btn2');
+        const carousel__btn3 = document.getElementById('carousel__btn3');
+        const carousel__btn_next = document.getElementById('carousel__btn_next');
+        const carousel__imgs = document.getElementById('carousel__imgs');
+        const computedStyle = window.getComputedStyle(carousel__imgs);
+        let img__index = 0;
+        carousel__btn_next.addEventListener('click', () => {
+          img__index++;
+          if(img__index > 2) {
+            img__index = 0;
+          }
+          carousel__imgs.style.left = `${img__index * -500}px`;
+          
+        })
+        carousel__btn_prev.addEventListener('click', () => {
+          img__index--;
+          if(img__index < 0) {
+            img__index = 2;
+          }
+          carousel__imgs.style.left = `${img__index * -500}px`;
+        })
+        
+        const handleBtn123 = (event) => {
+          const target = +event.target.innerText;
+          let left = 0;
+          switch(target){
+            case 1: left = img__index = 0; break;
+            case 2: left = img__index = 1; break;
+            case 3: left = img__index = 2;
+          }
+          carousel__imgs.style.left = `${img__index * -500}px`;
+        }
+
+        carousel__btn1.addEventListener('click', handleBtn123);
+        carousel__btn2.addEventListener('click', handleBtn123);
+        carousel__btn3.addEventListener('click', handleBtn123);
+
+      </script>
+      <div class="shadow-red">
+        <div class="shadow-green">
+          <div class="shadow-yellow">
+            <form>
+              <h1 id="title">회원가입</h1>
+              <input
+                type="text"
+                class="center"
+                id="name"
+                placeholder="이름을 입력하세요"
+              />
+              <input
+                type="email"
+                class="center"
+                id="email"
+                placeholder="이메일을 입력하세요"
+              />
+              <input
+                type="password"
+                class="center"
+                id="pwd"
+                placeholder="비밀번호를 입력하세요"
+              />
+              <input
+                type="password"
+                class="center"
+                id="pwdre"
+                placeholder="비밀번호를 다시 입력하세요"
+              />
+              <div class="center container-flex">
+                <input
+                  type="number"
+                  class="input-short phone"
+                  id="phone1"
+                  placeholder="010"
+                />
+                -
+                <input
+                  type="number"
+                  class="input-short phone"
+                  id="phone2"
+                  placeholder="1234"
+                />
+                -
+                <input
+                  type="number"
+                  class="input-short phone"
+                  id="phone3"
+                  placeholder="5678"
+                />
+              </div>
+              <select id="area" class="center">
+                <option value="select">- 지역을 선택해주세요 -</option>
+                <option value="gangwon">강원</option>
+                <option value="gwangju">광주</option>
+                <option value="gyeongi">경기</option>
+                <option value="gyeonsang">경상</option>
+                <option value="daegu">대구</option>
+                <option value="daejeon">대전</option>
+                <option value="busan">부산</option>
+                <option value="seoul">서울</option>
+                <option value="sejong">세종</option>
+                <option value="ulsan">울산</option>
+                <option value="incheon">인천</option>
+                <option value="jenla">전라</option>
+                <option value="jeju">제주</option>
+                <option value="chungcheong">충청</option>
+                <option value="abroad">해외</option>
+              </select>
+              <div class="center container-flex">
+                <div class="container-flex">
+                  <input type="radio" name="sex" id="sex1" checked value="남자"/>
+                  <label for="sex1">남자</label>
+                </div>
+                <div class="container-flex">
+                  <input type="radio" name="sex" id="sex2" value="여자"/>
+                  <label for="sex2">여자</label>
+                </div>
+                <div class="container-flex">
+                  <input type="radio" name="sex" id="sex3" value="기타"/>
+                  <label for="sex3">기타</label>
+                </div>
+              </div>
+              <div class="center container-flex flex-center">
+                <button type="submit">회원가입</button>
+                <button type="reset">취소</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementsByTagName('form')[0];
+      const btn = document.querySelector('button[type="submit"]');
+      const children = form.children;
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log(children.name.value);
+        console.log(children.email.value);
+        console.log(children.pwd.value);
+        console.log(children.pwdre.value);
+        const phone = document.querySelectorAll('.phone');
+        console.log(phone[0].value, phone[1].value, phone[2].value);
+        const area = document.getElementById('area');
+        console.log(area.value);
+        console.log(document.querySelector('input[name="sex"]:checked').value);
+      })
+    </script>
+  </body>
+</html>
