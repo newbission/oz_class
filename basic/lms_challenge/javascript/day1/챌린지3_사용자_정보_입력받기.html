@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 정보 입력받고 출려하기</title>
+  <style>
+    #hobby {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="name"></h1>
+  <p id="hobby"></p>
+  <p id="song"></p>
+  <script>
+    document.querySelector('#name').textContent = prompt('이름이 뭐야?');
+    document.querySelector('#hobby').textContent = `제가 좋아하는 동물은 ${prompt('무슨 동물 좋아해??')} 입니다!`;
+    document.querySelector('#song').textContent = `좋아하는 과일은 '${prompt('좋아하는 과일은 뭐야?')}'입니다!`;
+  </script>
+</body>
+</html>
