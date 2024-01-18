@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS 복습</title>
+  <link rel="stylesheet" href="챌린지4_js복습.css">
+</head>
+<body>
+  <div class="container">
+    <details>
+      <summary>1. 계산기</summary>
+      <div class="calc_wrap">
+        <div class="calc_display">1</div>
+        <div class="calc_btns">
+          <button class="calc_btn" id="calc_8" value="8">8</button>
+          <button class="calc_btn" id="calc_7" value="7">7</button>
+          <button class="calc_btn" id="calc_9" value="9">9</button>
+          <button class="calc_btn" id="calc_mul" value="X">X</button>
+          <button class="calc_btn" id="calc_4" value="4">4</button>
+          <button class="calc_btn" id="calc_5" value="5">5</button>
+          <button class="calc_btn" id="calc_6" value="6">6</button>
+          <button class="calc_btn" id="calc_div" value="÷">/</button>
+          <button class="calc_btn" id="calc_1" value="1">1</button>
+          <button class="calc_btn" id="calc_2" value="2">2</button>
+          <button class="calc_btn" id="calc_3" value="3">3</button>
+          <button class="calc_btn" id="minus" value="-"> - </button>
+          <button class="calc_btn" id="calc_reset" value="C">C</button>
+          <button class="calc_btn" id="calc_0" value="0">0</button>
+          <button class="calc_btn" id="calc_plus" value="+">+</button>
+          <button class="calc_btn" id="calc_result" value="="> = </button>
+        </div>
+      </div>
+    </details>
+    <details>
+      <summary>2. 구구단</summary>
+      <div class="gugu_wrap">
+        <table class="gugu_table">
+          <tr>
+            <th>2단</th>
+            <th>3단</th>
+            <th>4단</th>
+            <th>5단</th>
+            <th>6단</th>
+            <th>7단</th>
+            <th>8단</th>
+            <th>9단</th>
+          </tr>
+          <tr class="gugu_dan">
+          </tr>
+        </table>
+      </div>
+    </details>
+    <details>
+      <summary>3. 실시간 날짜와 시간</summary>
+      <div class="time_wrap"></div>
+    </details>
+    <details open>
+      <summary>4. ⏰스톱워치⏰</summary>
+      <div class="sw_wrap">
+        <p class="sw_display"></p>
+        <div class="sw_btns">
+          <button class="sw_start">시작</button>
+          <button class="sw_stop">정지</button>
+        </div>
+      </div>
+    </details>
+  </div>
+  <script src="챌린지4_js복습.js"></script>
+</body>
+</html>
