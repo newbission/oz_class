@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 번호 추첨게임</title>
+</head>
+<body>
+  <h3></h3>
+  <div id="display"></div>
+  <button id="draw">추첨</button>
+  <button id="reset">다시</button>
+  <script>
+    const drawBtn = document.getElementById('draw');
+    const resetBtn = document.getElementById('reset');
+    const displayEl = document.getElementById('display');
+    
+    let lottoNums = [];
+
+    const printNumber = (num) => {
+      const p = document.createElement('p');
+      p.innerText = num;
+      displayEl.append(p);
+    }
+
+    const clearDisplayEl = () => {
+      displayEl.innerText = '';
+    }
+
+    drawBtn.addEventListener('click', () => {
+      clearDisplayEl()
+      const nums = [];
+      while(nums.length < 6){
+        const randomNumber = Math.floor(Math.random()*45) + 1
+        if(!nums.includes(randomNumber)){
+          nums.push(randomNumber);
+          printNumber(randomNumber)
+        }
+      }
+    })
+
+    resetBtn.addEventListener('click', () => {
+      clearDisplayEl();
+    })
+
+    const dateEl = document.querySelector('h3');
+    const date = new Date();
+    dateEl.innerText = `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일 로또 번호 추첨`;
+
+  </script>
+</body>
+</html>
