@@ -1,0 +1,53 @@
+summary::marker {
+  content: '';
+}
+
+/* RPS */
+#rps_summary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  top: 10px;
+}
+
+#rps_summary img {
+  width: 35px;
+  margin: 0 10px;
+}
+
+#rps_play_container {
+  gap: 10px;
+}
+
+#rps_play_user input {
+  display: none;
+}
+
+#rps_play_user img {
+  border: 2px solid gray;
+}
+
+#rps_play_user input:checked + img {
+  border: 2px solid skyblue;
+}
+
+#rps_computer_choice {
+  width: 150px;
+  height: 200px;
+}
+
+.rps_user_choice {
+  width: 100px;
+}
+
+
+/* BG */
+#bg_summary {
+  display: inline-block;
+}
+#bg_div {
+  width: 80vw;
+  height: calc(80vw * (9/ 16));
+  margin: 30px auto;
+  background: url("img/bg/meme1.jpg") center/contain no-repeat ;
+}
