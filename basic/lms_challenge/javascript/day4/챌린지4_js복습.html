@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS 복습 4</title>
+    <link rel="stylesheet" href="챌린지4_js복습.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .flex {
+        display: flex;
+      }
+
+      .f-column {
+        flex-direction: column;
+      }
+      .f-a-center {
+        align-items: center;
+      }
+      .f-j-center {
+        justify-content: center;
+      }
+      .container {
+        text-align: center;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="rps_container" class="container">
+      <details>
+        <summary>
+          <div id="rps_summary">
+            <img src="img/rps/rps_icon.png" />
+            <h1>가위바위보 게임</h1>
+            <img src="img/rps/rps_icon.png" />
+          </div>
+        </summary>
+        <p>가위, 바위, 보 중 하나를 선택하세요</p>
+        <div id="rps_play_container" class="flex f-a-center f-j-center">
+          <div id="rps_play_user" class="flex f-column">
+            <label>
+              <input
+                type="radio"
+                name="rps_user_choice"
+                id="rps_user_choice_rock"
+                value="0"
+                checked
+              />
+              <img
+                src="img/rps/rps_user_rock.png"
+                alt="바위"
+                class="rps_user_choice"
+              />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="rps_user_choice"
+                id="rps_user_choice_paper"
+                value="1"
+              />
+              <img
+                src="img/rps/rps_user_paper.png"
+                alt="보"
+                class="rps_user_choice"
+              />
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="rps_user_choice"
+                id="rps_user_choice_scissors"
+                value="2"
+              />
+              <img
+                src="img/rps/rps_user_scissors.png"
+                alt="가위"
+                class="rps_user_choice"
+              />
+            </label>
+          </div>
+          <h1>vs</h1>
+          <div id="rps_play_computer" class="flex f-a-center">
+            <img
+              id="rps_computer_choice"
+              src="img/rps/rps_question_mark_robot.jpg"
+              alt="물음표"
+            />
+          </div>
+        </div>
+        <button id="rps_btn">결과 확인</button>
+        <p id="rps_result">결과:</p>
+      </details>
+    </div>
+
+    <div id="bg_container" class="container">
+      <details>
+        <summary>
+          <div id="bg_summary">
+            <h1>🤚 이미지멈춰!</h1>
+          </div>
+        </summary>
+        <div id="bg_div"></div>
+        <button id="bg_btn">실행</button>
+      </details>
+    </div>
+
+    <div id="icecream_container" class="container">
+      <details>
+        <summary>
+          <div id="icecream_summary">
+            <h1>아이스크림 추가 및 나열 🍦</h1>
+          </div>
+        </summary>
+        <div class="icecream_btns">
+          <button id="icecream_btn_add">아이스크림 추가</button>
+          <button id="icecream_btn_show">아이스크림 보기</button>
+          <button id="icecream_btn_list">아이스크림 리스트</button>
+        </div>
+        <div>
+          <p>아이스크림 리스트</p>
+          <p id="icecream_list"></p>
+        </div>
+      </details>
+    </div>
+    <script src="챌린지4_js복습.js"></script>
+  </body>
+</html>
