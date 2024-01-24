@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js복습5</title>
+  </head>
+  <body>
+    <h1>떡잎 유치원 멀리뛰기 결과</h1>
+    <table border="1">
+      <tr>
+        <th>이름</th>
+        <th>점수</th>
+      </tr>
+      <tr>
+        <td>짱구</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <td>맹구</td>
+        <td>75</td>
+      </tr>
+      <tr>
+        <td>철수</td>
+        <td>95</td>
+      </tr>
+      <tr>
+        <td>훈이</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>유리</td>
+        <td>68</td>
+      </tr>
+      <tr>
+        <td>수지</td>
+        <td>86</td>
+      </tr>
+    </table>
+    <h2>75점이 넘는 사람: </h2>
+    <script>
+      const scores = [];
+      const names = [];
+      document.querySelectorAll('table tr td:last-child')
+              .forEach((e, i) => scores.push([+e.innerText, i]));
+      document.querySelectorAll('table tr td:first-child')
+              .forEach(e => names.push(e.innerText));
+      scores.sort((a,b) => b[0] - a[0]);
+      const result = document.querySelector('h2');
+      scores.map(score => {
+        if(score[0] > 75) {
+          result.innerText += ' ' + names[score[1]];
+        }
+      })
+    </script>
+  </body>
+</html>
