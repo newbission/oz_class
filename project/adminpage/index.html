@@ -11,13 +11,14 @@
     th, td {
       border: none;
       border-left: 1px solid lightgray;
+      text-align: center;
     }
     th:first-child,
     tr>td:first-child {
       border-left: none;
     }
-    tr>td:first-child {
-      text-align: center;
+    tr>td:nth-child(4) {
+      text-align: left;
     }
   </style>
 </head>
@@ -35,10 +36,10 @@
         <select class="form-select" id="inlineFormSelectPref">
           <!-- 카테고리 셀렉트 코드를 넣어주세요-->
           <option value="all">카테고리</option>
-          <option value="top">상의</option>
-          <option value="pants">하의</option>
-          <option value="shoes">신발</option>
-          <option value="etc">패션잡화</option>
+          <option value="상의">상의</option>
+          <option value="하의">하의</option>
+          <option value="신발">신발</option>
+          <option value="패션잡화">패션잡화</option>
         </select>
       </div>
       <div class="col-auto">

@@ -7,41 +7,41 @@ const dataTable = document.getElementById('data-table');
  * 카테고리, 브랜드, 상품명, 가격,  
  * 성별, 등록일자
  */
-const data = [
-  {
-    gender: '공용',
-    category: '상의',
-    brand: 'Supreme',
-    product: '슈프림 박스로고 후드티',
-    price: '390,000',
-    add_date: '2024-01-15',
-  },
-  {
-    gender: '남자',
-    category: '하의',
-    brand: 'DIESEL',
-    product: '디젤 트랙 팬츠',
-    price: '188,000',
-    add_date: '2024-01-17',
-  },
-  {
-    gender: '여자',
-    category: '신발',
-    brand: 'Nike',
-    product: '에어포스 1',
-    price: '137,000',
-    add_date: '2024-01-22',
-  },
-  {
-    gender: '공용',
-    category: '패션잡화',
-    brand: 'Music&Goods',
-    product: '빵빵이 키링',
-    price: '29,000',
-    add_date: '2024-01-26',
-  },
-  // ...
-];
+// const data = [
+//   {
+//     gender: '공용',
+//     category: '상의',
+//     brand: 'Supreme',
+//     product: '슈프림 박스로고 후드티',
+//     price: '390,000',
+//     add_date: '2024-01-15',
+//   },
+//   {
+//     gender: '남자',
+//     category: '하의',
+//     brand: 'DIESEL',
+//     product: '디젤 트랙 팬츠',
+//     price: '188,000',
+//     add_date: '2024-01-17',
+//   },
+//   {
+//     gender: '여자',
+//     category: '신발',
+//     brand: 'Nike',
+//     product: '에어포스 1',
+//     price: '137,000',
+//     add_date: '2024-01-22',
+//   },
+//   {
+//     gender: '공용',
+//     category: '패션잡화',
+//     brand: 'Music&Goods',
+//     product: '빵빵이 키링',
+//     price: '29,000',
+//     add_date: '2024-01-26',
+//   },
+//   // ...
+// ];
 
 
 /**
@@ -49,7 +49,7 @@ const data = [
  */
 const fashionData = {
   genders: ['공용', '남성', '여성'],
-  categories: ['상의', '하의', '신발', '모자', '액세서리'],
+  categories: ['상의', '하의', '신발', '패션잡화'],
   brands: ['Nike', 'Adidas', 'Gucci', 'Supreme', 'Zara', 'Puma', 'Converse', 'Fila', 'Balenciaga', 'Vans'],
   products: ['에어포스 1', '트랙 팬츠', '로고 티셔츠', '슬립온 스니커즈', '베이직 모자', '후드 스웨트셔츠', '스키니 진', '버켄스탁 샌들', '체크 무스탕', '구찌 목걸이'], 
   prices: ['390,000', '45,000', '29,000', '120,000', '18,000', '60,000', '35,000', '80,000', '450,000', '75,000'],
@@ -62,20 +62,20 @@ const fashionData = {
 function createDummy(n){
   const dummy = [];
   while(n--){
-    dummy.push(createData());
+    dummy.push(createItem());
   }
   return dummy;
 }
 
-function createData(){
-  const data = {};
-  data.gender = fashionData.genders[randNum(3)];
-  data.category = fashionData.categories[randNum(fashionData.categories.length)];
-  data.brand = fashionData.brands[randNum(fashionData.brands.length)];
-  data.product = fashionData.products[randNum(fashionData.products.length)];
-  data.price = fashionData.prices[randNum(fashionData.prices.length)];
-  data.add_date = fashionData.add_dates[randNum(fashionData.add_dates.length)];
-  return data;
+function createItem(){
+  const item = {};
+  item.gender = fashionData.genders[randNum(3)];
+  item.category = fashionData.categories[randNum(fashionData.categories.length)];
+  item.brand = fashionData.brands[randNum(fashionData.brands.length)];
+  item.product = fashionData.products[randNum(fashionData.products.length)];
+  item.price = fashionData.prices[randNum(fashionData.prices.length)];
+  item.add_date = fashionData.add_dates[randNum(fashionData.add_dates.length)];
+  return item;
 }
 
 function randNum(n){
@@ -83,8 +83,7 @@ function randNum(n){
 }
 
 // 테스트용 더미데이터
-const dummy = createDummy(100);
-// console.log(dummy);
+const data = createDummy(100);
 
 /**
  * 테이블에 추가할 아이템
@@ -130,13 +129,14 @@ function resetTable() {
  * 테이블에 데이터 전부 출력
  */
 function printAllData() {
-  printDataByDataSet(dummy);
+  printDataByDataSet(data);
 }
 
 /**
  * 테이블에 데이터 출력(데이터셋 필요)
  */
 function printDataByDataSet(dataSet) {
+  dataTable.innerHTML = '';
   dataSet.forEach((data, index) => {
     const row = createNewRowByData(data, index);
     dataTable.appendChild(row);
@@ -155,3 +155,17 @@ document.getElementById('check-all').addEventListener('change', (event) => {
     checkbox.dispatchEvent(new Event('change'));
   })
 })
+
+// 카테고리 선택
+const categoryEl = document.getElementById('inlineFormSelectPref');
+categoryEl.addEventListener('change', (event) => {
+  const selectedCategory = event.target.value;
+  if(selectedCategory === 'all'){
+    printAllData();
+  }else{
+    const filteredData = data.filter((item) => item.category === selectedCategory);
+    printDataByDataSet(filteredData);
+  }
+})
+
+// 조회버튼
