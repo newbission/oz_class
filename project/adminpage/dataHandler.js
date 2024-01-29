@@ -1,5 +1,11 @@
 // DOM
 const dataTable = document.getElementById('data-table');
+const checkAllEl = document.getElementById('check-all');
+
+// Data
+const DISPLAY_NUMBER = 20;
+
+let isCheckAllClick = false;
 
 /**
  * 필수정보
@@ -98,6 +104,7 @@ let filteredData = [...originalData];
 /**
  * 테이블에 추가할 아이템
  */
+let checkedCount = 0;
 function createNewRowByData(data, index) {
   const row = document.createElement('tr');
   const checkbox = document.createElement('input');
@@ -116,8 +123,14 @@ function createNewRowByData(data, index) {
   checkbox.addEventListener('change', (event) => {
     if (checkbox.checked) {
       row.classList.add('table-primary');
+      checkedCount++;
     } else {
       row.classList.remove('table-primary');
+      checkedCount--;
+    }
+
+    if (!isCheckAllClick) {
+      checkAllEl.checked = checkedCount === DISPLAY_NUMBER;
     }
   });
 
@@ -147,12 +160,14 @@ function createEmptyRow() {
 /**
  * 전체 선택/해제
  */
-document.getElementById('check-all').addEventListener('change', (event) => {
+checkAllEl.addEventListener('change', (event) => {
   const checkboxes = dataTable.querySelectorAll('input[type=checkbox]');
+  isCheckAllClick = true;
   checkboxes.forEach((checkbox) => {
     checkbox.checked = event.target.checked;
     checkbox.dispatchEvent(new Event('change'));
   });
+  isCheckAllClick = false;
 });
 
 /**
@@ -169,7 +184,6 @@ function resetTable() {
 function printAllData() {
   printDataByDataSet(originalData);
 }
-const DISPLAY_NUMBER = 20;
 
 /**
  * 테이블에 데이터 출력(데이터셋 필요)
