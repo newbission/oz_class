@@ -100,7 +100,8 @@ function createNewRowByData(data, index) {
   row.insertCell(2).innerHTML = data.brand;
   row.insertCell(3).innerHTML = data.product;
   row.insertCell(4).innerHTML = data.price;
-  row.insertCell(5).innerHTML = data.add_date;
+  row.insertCell(5).innerHTML = data.gender;
+  row.insertCell(6).innerHTML = data.add_date;
 
   checkbox.addEventListener('change', (event) => {
     if (checkbox.checked) {
@@ -116,6 +117,17 @@ function createNewRowByData(data, index) {
   });
   return row;
 }
+
+/**
+ * 전체 선택/해제
+ */
+document.getElementById('check-all').addEventListener('change', (event) => {
+  const checkboxes = dataTable.querySelectorAll('input[type=checkbox]');
+  checkboxes.forEach(checkbox => {
+    checkbox.checked = event.target.checked;
+    checkbox.dispatchEvent(new Event('change'));
+  })
+});
 
 /**
  * 테이블 리셋  
@@ -137,35 +149,79 @@ function printAllData() {
  */
 function printDataByDataSet(dataSet) {
   dataTable.innerHTML = '';
+  document.getElementById('check-all').checked = false;
   dataSet.forEach((data, index) => {
     const row = createNewRowByData(data, index);
     dataTable.appendChild(row);
   })
 }
 
-printAllData();
+// printAllData();
 
-/**
- * 전체 선택/해제
- */
-document.getElementById('check-all').addEventListener('change', (event) => {
-  const checkboxes = dataTable.querySelectorAll('input[type=checkbox]');
-  checkboxes.forEach(checkbox => {
-    checkbox.checked = event.target.checked;
-    checkbox.dispatchEvent(new Event('change'));
-  })
-})
-
-// 카테고리 선택
 const categoryEl = document.getElementById('inlineFormSelectPref');
-categoryEl.addEventListener('change', (event) => {
-  const selectedCategory = event.target.value;
-  if(selectedCategory === 'all'){
-    printAllData();
-  }else{
-    const filteredData = data.filter((item) => item.category === selectedCategory);
+
+function PRINT_TEST(_initData) {
+  let category = 'all';
+  let keyword = '';
+  const initData = _initData;
+  let currentData = _initData;
+
+  this.print = function() {
+    // if(keyword === '' && category === 'all'){
+    //   printDataByDataSet(initData);
+    // }
+    const filteredData = currentData.filter((item) => {
+      return category === 'all' ? true : item.category === category;
+    })
     printDataByDataSet(filteredData);
   }
-})
+
+  this.setCategory = function(_category) {
+    if(category === _category) return;
+    category = _category;
+    this.print();
+  }
+  this.setKeyword = function(_keyword) {
+    if(keyword === _keyword) return;
+    keyword = _keyword.toLowerCase();
+    this.setCurrentData();
+    categoryEl[0].selected = true;
+    categoryEl.dispatchEvent(new Event('change'));
+    this.print();
+  }
+  
+  this.setCurrentData = function() {
+    currentData = initData.filter((item) => {
+      const isBrandInclude = item.brand.toLowerCase().includes(keyword);
+      const isProductInclude = item.product.toLowerCase().includes(keyword);
+      return isBrandInclude || isProductInclude;
+    });
+  }
+
+  this.print();
+}
+
+const pt = new PRINT_TEST(data);
+pt.print();
+
+
+
+// 카테고리 선택
+categoryEl.addEventListener('change', (event) => {
+  const selectedCategory = event.target.value;
+  pt.setCategory(selectedCategory);
+  // if(selectedCategory === 'all'){
+  //   printAllData();
+  // }else{
+  //   const filteredData = data.filter((item) => item.category === selectedCategory);
+  //   printDataByDataSet(filteredData);
+  // }
+});
 
 // 조회버튼
+const searchForm = document.getElementById('search-form');
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = searchForm.searchInput.value.trim();
+  pt.setKeyword(value);
+})
