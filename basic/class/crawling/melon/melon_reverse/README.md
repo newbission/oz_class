@@ -24,4 +24,4 @@ while(user_choice != 999):
 > 앱 시작 시 모든 데이터를 추출하면 데이터 로딩 시간도 생기고 사용자가 궁금하지 않은 차트의 데이터를 가져오는 등의 낭비가 발생하기 때문에 사용자가 원하는 차트 선택 시 최초 한 번 해당 차트의 데이터를 추출하도록 설정
 
 ### ▶️ 실행 결과
-<img width="100%" alt="실행결과" src="https://github.com/newbission/oz_class/assets/155050120/c316bb14-314a-43a1-b087-0355fe2cdbde">
+<div style="text-align:center;"><img width="80%" height="300px" alt="실행결과" src="https://github.com/newbission/oz_class/assets/155050120/c316bb14-314a-43a1-b087-0355fe2cdbde"></div>
