@@ -128,7 +128,6 @@ function createNewRowByData(data, index) {
       row.classList.remove('table-primary');
       checkedCount--;
     }
-
     if (!isCheckAllClick) {
       checkAllEl.checked = checkedCount === DISPLAY_NUMBER;
     }
@@ -164,6 +163,8 @@ checkAllEl.addEventListener('change', (event) => {
   const checkboxes = dataTable.querySelectorAll('input[type=checkbox]');
   isCheckAllClick = true;
   checkboxes.forEach((checkbox) => {
+    if (checkbox.checked === event.target.checked) return;
+
     checkbox.checked = event.target.checked;
     checkbox.dispatchEvent(new Event('change'));
   });
