@@ -92,7 +92,13 @@ UPDATE Books SET title = 'new title' WHERE bookID = 1 AND author = '강용화';
 
 # 판매지수가 가장 낮은 책을 데이터베이스에서 삭제하세요.
 select * from books;
-DELETE FROM Books WHERE bookID = (SELECT bookID FROM Books ORDER BY sales ASC LIMIT 1);
+
+WITH book AS(
+	SELECT bookID FROM Books ORDER BY sales ASC LIMIT 1
+)
+DELETE FROM Books WHERE bookID = (SELECT bookID FROM book);
+
+
 
 #특정 출판사가 출판한 모든 책의 평점을 1점 증가시키세요.
 UPDATE Books SET rating = rating + 1 WHERE publisher = 'a publisher';
