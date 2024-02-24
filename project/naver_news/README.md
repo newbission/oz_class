@@ -7,13 +7,17 @@
 ### 수집정보
 > [!IMPORTANT]
 > **title**: 기사 제목  
-> **press**: 언론사  
+> **press**: 언론사
 > **journalist**: 기자(없는 경우도 있어서 `NULL` 가능)  
-> **upload_date**: 최초 업로드 날짜 및 시각  
-> **update_date**: 마지막으로 수정된 날짜 및 시각  
+> **upload_time**: 최초 업로드 날짜 및 시각  
+> **update_time**: 마지막으로 수정된 날짜 및 시각  
 > **naver_url**: 네이버 주소  
 > **original_url**: 원문 주소  
 > **summary**: 기사 상단 요약 
+> **header**: 기사 주제
+> **thumbnail_url**: 썸네일 원본 url
+> **thumbnail_file_name**: 썸네일 저장본 이름
+> **category**: 기사 카테고리
 
 
 ```SQL
@@ -29,5 +33,8 @@ CREATE TABLE naver_opinian(
   image_url VARCHAR(255),
   summary VARCHAR(255),
   header VARCHAR(20),
+  thumbnail_url VARCHAR(255),
+  thumbnail_file_name VARCHAR(20),
+  category: VARCHAR(5),
 )
 ```
