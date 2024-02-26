@@ -1,17 +1,11 @@
-import sys
-sys.path.append("../scraping")
-
 # 스크랩 데이터 가져오기
-from naver_scraper import scrap, categories
-import db_utils
+import db.db_utils as db_utils
 
-def save_data():
-    scrap_data = scrap()
+def save_data(scrap_data):
     try:
         connection = db_utils.get_connection()
         sql = "INSERT INTO naver_opinions (title, press, journalist, upload_time, update_time, naver_url, original_url, summary, header, thumbnail_url, thumbnail_file_name, category) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        for category in categories:
-            opinions_by_category = scrap_data[category]
+        for opinions_by_category in scrap_data:
             for opinion in opinions_by_category:
                 args = (
                     opinion["title"],
@@ -31,6 +25,3 @@ def save_data():
             db_utils.commit_querys(connection)
     finally:
         db_utils.close_connection(connection)
-
-if __name__ == "__main__":
-    save_data()
