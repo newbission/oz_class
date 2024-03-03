@@ -21,7 +21,7 @@
 
 
 ```SQL
-CREATE TABLE naver_opinian(
+CREATE TABLE naver_opinion(
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   press VARCHAR(20) NOT NULL,
@@ -30,11 +30,10 @@ CREATE TABLE naver_opinian(
   update_time TIMESTAMP DEFAULT NULL,
   naver_url VARCHAR(255) NOT NULL,
   original_url VARCHAR(255),
-  image_url VARCHAR(255),
   summary VARCHAR(255),
   header VARCHAR(20),
   thumbnail_url VARCHAR(255),
   thumbnail_file_name VARCHAR(20),
-  category: VARCHAR(5),
+  category VARCHAR(5)
 )
 ```
