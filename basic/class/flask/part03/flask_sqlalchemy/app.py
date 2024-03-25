@@ -1,8 +1,7 @@
 from flask import Flask, render_template
 from flask_smorest import Api
-from flask_sqlalchemy import SQLAlchemy
 from db import db
-from models import User, Board
+from flask_migrate import Migrate
 
 from routes.user import user_blp
 from routes.board import board_blp
@@ -12,6 +11,8 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:root@localhost/oz"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
+
+migrate = Migrate(app, db)
 
 app.config["API_TITLE"] = "My API"
 app.config["API_VERSION"] = "v1"
